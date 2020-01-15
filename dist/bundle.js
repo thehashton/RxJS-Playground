@@ -4622,13 +4622,48 @@ function toSubscriber(nextOrObserver, error, complete) {
 exports.toSubscriber = toSubscriber;
 
 },{"../Observer":7,"../Subscriber":13,"../symbol/rxSubscriber":72}],102:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.executionContext = undefined;
+
+var _rxjs = require("rxjs");
+
+var executionContext = exports.executionContext = function executionContext() {
+    var button = document.getElementById("myButton");
+    // an observable from button clicks
+    var myObservable = (0, _rxjs.fromEvent)(button, "click");
+
+    // addEventListener called
+    var subscription = myObservable.subscribe(function (event) {
+        return console.log(event);
+    });
+
+    // addEventListener called again!
+    var secondSubscription = myObservable.subscribe(function (event) {
+        return console.log(event);
+    });
+
+    // clean up with unsubscribe
+    // subscription.unsubscribe();
+    secondSubscription.unsubscribe();
+};
+
+exports.default = executionContext;
+
+},{"rxjs":1}],103:[function(require,module,exports){
 'use strict';
 
 var _subscriptionMapping = require('./subscriptionMapping');
 
-(0, _subscriptionMapping.subscriptionMapping)();
+var _executionContext = require('./executionContext');
 
-},{"./subscriptionMapping":103}],103:[function(require,module,exports){
+// subscriptionMapping();
+(0, _executionContext.executionContext)();
+
+},{"./executionContext":102,"./subscriptionMapping":104}],104:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4662,4 +4697,4 @@ var subscriptionMapping = exports.subscriptionMapping = function subscriptionMap
 
 exports.default = subscriptionMapping;
 
-},{"rxjs":1}]},{},[102]);
+},{"rxjs":1}]},{},[103]);
