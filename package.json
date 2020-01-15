@@ -1,0 +1,25 @@
+{
+  "name": "rxjs-playground",
+  "version": "1.0.0",
+  "description": "A playground for all things RxJS",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hghazni/RxJS-Playground.git"
+  },
+  "keywords": [
+    "rxjs"
+  ],
+  "author": "Harry Ghazni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hghazni/RxJS-Playground/issues"
+  },
+  "homepage": "https://github.com/hghazni/RxJS-Playground#readme",
+  "dependencies": {
+    "rxjs": "^6.5.4"
+  }
+}
