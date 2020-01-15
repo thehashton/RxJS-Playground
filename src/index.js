@@ -1,5 +1,10 @@
 import {fromEvent} from 'rxjs';
 
-document.addEventListener("click", (evt) => {
-    console.log(evt.target);
+const button = document.getElementById("myButton");
+
+// an observable from button clicks
+const myObservable = fromEvent(button, "click");
+
+document.addEventListener("click", () => {
+    console.log(myObservable);
 })
