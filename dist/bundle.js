@@ -4622,14 +4622,29 @@ function toSubscriber(nextOrObserver, error, complete) {
 exports.toSubscriber = toSubscriber;
 
 },{"../Observer":7,"../Subscriber":13,"../symbol/rxSubscriber":72}],102:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var _rxjs = require('rxjs');
+var _rxjs = require("rxjs");
 
-alert('lol');
+var button = document.getElementById("myButton");
 
-document.addEventListener("click", function (evt) {
-    console.log(evt.target);
+// an observable from button clicks
+var myObservable = (0, _rxjs.fromEvent)(button, "click");
+
+//log the event on each click
+var subscription = myObservable.subscribe({
+    // on successful emission
+    next: function next(event) {
+        return console.log(event);
+    },
+    // on errors
+    error: function error(_error) {
+        return console.log(_error);
+    },
+    // on completion
+    complete: function complete() {
+        return console.log('complete!');
+    }
 });
 
 },{"rxjs":1}]},{},[102]);
