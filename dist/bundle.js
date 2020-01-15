@@ -4622,29 +4622,44 @@ function toSubscriber(nextOrObserver, error, complete) {
 exports.toSubscriber = toSubscriber;
 
 },{"../Observer":7,"../Subscriber":13,"../symbol/rxSubscriber":72}],102:[function(require,module,exports){
+'use strict';
+
+var _subscriptionMapping = require('./subscriptionMapping');
+
+(0, _subscriptionMapping.subscriptionMapping)();
+
+},{"./subscriptionMapping":103}],103:[function(require,module,exports){
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.subscriptionMapping = undefined;
 
 var _rxjs = require("rxjs");
 
-var button = document.getElementById("myButton");
+var subscriptionMapping = exports.subscriptionMapping = function subscriptionMapping() {
+    var button = document.getElementById("myButton");
+    // an observable from button clicks
+    var myObservable = (0, _rxjs.fromEvent)(button, "click");
 
-// an observable from button clicks
-var myObservable = (0, _rxjs.fromEvent)(button, "click");
+    //log the event on each click
+    var subscription = myObservable.subscribe({
+        // on successful emission
+        next: function next(event) {
+            return console.log(event);
+        },
+        // on errors
+        error: function error(_error) {
+            return console.log(_error);
+        },
+        // on completion
+        complete: function complete() {
+            return console.log('complete!');
+        }
+    });
+};
 
-//log the event on each click
-var subscription = myObservable.subscribe({
-    // on successful emission
-    next: function next(event) {
-        return console.log(event);
-    },
-    // on errors
-    error: function error(_error) {
-        return console.log(_error);
-    },
-    // on completion
-    complete: function complete() {
-        return console.log('complete!');
-    }
-});
+exports.default = subscriptionMapping;
 
 },{"rxjs":1}]},{},[102]);
