@@ -1,4 +1,6 @@
-import creationOperator from "./creationOperator";
+import takeOperator from "./takeOperator";
+
+// import creationOperator from "./creationOperator";
 
 // import {subscriptionMapping} from './subscriptionMapping';
 // import {executionContext} from './executionContext';
@@ -11,4 +13,5 @@ import creationOperator from "./creationOperator";
 // operatorMap();
 // operatorFilter();
 // operatorPipe();
-creationOperator();
+// creationOperator();
+takeOperator();
